@@ -48,14 +48,6 @@ const persistent_menu = [
     ],
   },
 ];
-
-const quick_buttons_generic: Array<SendQuickReply> = [
-  {
-    content_type: 'text',
-    title: 'trợ giúp',
-    payload: lang.KEYWORD_HELP,
-  },
-];
 const setPersona = async (): Promise<void> => {
   // Check if persona is already set up
   let setUp = false;
