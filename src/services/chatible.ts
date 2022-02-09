@@ -22,9 +22,9 @@ import { WebhookMessagingEvent, WebhookMessageObject } from '../interfaces/Faceb
 const parseGender = (genderString: string): GenderEnum | null => {
   let res: GenderEnum | null;
   if (genderString === lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE) {
-    res = GenderEnum.MALE;
-  } else if (genderString === lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE) {
     res = GenderEnum.FEMALE;
+  } else if (genderString === lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE) {
+    res = GenderEnum.MALE;
   } else if (genderString === lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_BOTH) {
     res = GenderEnum.UNKNOWN;
   } else {
