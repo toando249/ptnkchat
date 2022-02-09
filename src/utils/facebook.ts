@@ -31,6 +31,26 @@ const persistent_menu = [
     composer_input_disabled: false,
     call_to_actions: [
       {
+        title: 'meow',
+        type: 'postback',
+        payload: lang.KEYWORD_CAT,
+      },
+      {
+        title: 'gauw',
+        type: 'postback',
+        payload: lang.KEYWORD_DOG,
+      },
+      {
+        title: 'tìm nam',
+        type: 'postback',
+        payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE,
+      },
+      {
+        title: 'tìm nữ',
+        type: 'postback',
+        payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE,
+      },
+      {
         title: 'kết thúc',
         type: 'postback',
         payload: lang.KEYWORD_END,
@@ -48,6 +68,38 @@ const persistent_menu = [
     ],
   },
 ];
+
+const quick_buttons_generic: Array<SendQuickReply> = [
+  {
+    content_type: 'text',
+    title: 'meow',
+    payload: lang.KEYWORD_CAT,
+  },
+  {
+    content_type: 'text',
+    title: 'gauw',
+    payload: lang.KEYWORD_DOG,
+  },
+  {
+    content_type: 'text',
+    title: 'trợ giúp',
+    payload: lang.KEYWORD_HELP,
+  },
+];
+
+const quick_buttons_genders: Array<SendQuickReply> = [
+  {
+    content_type: 'text',
+    title: 'tìm nam',
+    payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE,
+  },
+  {
+    content_type: 'text',
+    title: 'tìm nữ',
+    payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE,
+  },
+];
+
 const setPersona = async (): Promise<void> => {
   // Check if persona is already set up
   let setUp = false;
@@ -218,6 +270,8 @@ const sendMessage = async (
  * @param receiver - ID of receiver
  * @param type - Type of attachment (`image`, `video`, `audio`, `file`)
  * @param url - URL of attachment
+ * @param showGenericButton - Should show generic button
+ * @param showGenderButton - Should show gender button
  * @param usePersona - Should send with persona
  */
 const sendAttachment = async (
@@ -228,12 +282,26 @@ const sendAttachment = async (
   showGenericButton: boolean,
   showGenderButton: boolean,
   usePersona: boolean,
+): Promise<void> => {
+  let quick_replies: Array<SendQuickReply> = [];
+  if (showGenericButton) {
+    quick_replies = quick_replies.concat(quick_buttons_generic);
+  }
+  if (showGenderButton) {
+    quick_replies = quick_replies.concat(quick_buttons_genders);
+  }
+
   const message: SendMessageObject = {
     attachment: {
       type,
       payload: { url },
     },
   };
+
+  if (showGenericButton || showGenderButton) {
+    message.quick_replies = quick_replies;
+  }
+
   await sendMessage(receiver, message, usePersona, sender);
 };
 
@@ -254,6 +322,8 @@ const sendTextMessage = async (sender: string, receiver: string, text: string, u
  * @param text - Text to send
  * @param showStartButton - Should show start button
  * @param showReportButton - Should show report button
+ * @param showGenericButton - Should show generic button
+ * @param showGenderButton - Should show gender button
  * @param usePersona - Should send with persona
  */
 const sendTextButtons = async (
@@ -261,6 +331,8 @@ const sendTextButtons = async (
   text: string,
   showStartButton: boolean,
   showReportButton: boolean,
+  showGenericButton: boolean,
+  showGenderButton: boolean,
   usePersona: boolean,
 ): Promise<void> => {
   const buttons = [];
@@ -272,7 +344,21 @@ const sendTextButtons = async (
   if (showReportButton) {
     buttons.push({ type: 'web_url', title: 'Gửi phản hồi', url: config.REPORT_LINK });
   }
+
+  let quick_replies: Array<SendQuickReply> = [];
+  if (showGenericButton) {
+    quick_replies = quick_replies.concat(quick_buttons_generic);
+  }
+  if (showGenderButton) {
+    quick_replies = quick_replies.concat(quick_buttons_genders);
+  }
+
   const messageData: SendMessageObject = {};
+
+  if (showGenericButton || showGenderButton) {
+    messageData.quick_replies = quick_replies;
+  }
+
   if (showStartButton || showReportButton) {
     messageData.attachment = {
       type: 'template',
