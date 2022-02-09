@@ -90,11 +90,6 @@ const findPair = async (id: string, myGender: GenderEnum): Promise<void> => {
     const target = entry.id;
     const targetGender = entry.gender;
 
-    // check if they have just been paired
-    // if ((await db.checkLastPerson(id, target)) || (await db.checkLastPerson(target, id))) {
-      continue;
-    }
-
     // pair if genders match
     // or there are too many people in wait room
     // or gender of one of them is unknown (with probability 0.2)
