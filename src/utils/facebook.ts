@@ -31,26 +31,6 @@ const persistent_menu = [
     composer_input_disabled: false,
     call_to_actions: [
       {
-        title: 'meow',
-        type: 'postback',
-        payload: lang.KEYWORD_CAT,
-      },
-      {
-        title: 'gauw',
-        type: 'postback',
-        payload: lang.KEYWORD_DOG,
-      },
-      {
-        title: 'tìm nam',
-        type: 'postback',
-        payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE,
-      },
-      {
-        title: 'tìm nữ',
-        type: 'postback',
-        payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE,
-      },
-      {
         title: 'kết thúc',
         type: 'postback',
         payload: lang.KEYWORD_END,
@@ -72,34 +52,10 @@ const persistent_menu = [
 const quick_buttons_generic: Array<SendQuickReply> = [
   {
     content_type: 'text',
-    title: 'meow',
-    payload: lang.KEYWORD_CAT,
-  },
-  {
-    content_type: 'text',
-    title: 'gauw',
-    payload: lang.KEYWORD_DOG,
-  },
-  {
-    content_type: 'text',
     title: 'trợ giúp',
     payload: lang.KEYWORD_HELP,
   },
 ];
-
-const quick_buttons_genders: Array<SendQuickReply> = [
-  {
-    content_type: 'text',
-    title: 'tìm nam',
-    payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE,
-  },
-  {
-    content_type: 'text',
-    title: 'tìm nữ',
-    payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE,
-  },
-];
-
 const setPersona = async (): Promise<void> => {
   // Check if persona is already set up
   let setUp = false;
