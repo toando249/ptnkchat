@@ -91,7 +91,7 @@ const findPair = async (id: string, myGender: GenderEnum): Promise<void> => {
     const targetGender = entry.gender;
     
     // check if they have just been paired
-    if ((await db.checkLastPerson(id, target)) && (await db.checkLastPerson(target, id))) {
+    if ((await db.checkLastPerson(id, target)) || (await db.checkLastPerson(target, id))) {
       continue;
     }
 
