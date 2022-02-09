@@ -227,9 +227,9 @@ const processEvent = async (event: WebhookMessagingEvent): Promise<void> => {
       } else {
         let genderString = '';
         if (gender === GenderEnum.MALE) {
-          genderString = lang.GENDER_ARR_FEMALE;
-        } else if (gender === GenderEnum.FEMALE) {
           genderString = lang.GENDER_ARR_MALE;
+        } else if (gender === GenderEnum.FEMALE) {
+          genderString = lang.GENDER_ARR_FEMALE;
         }
 
         if (gender !== GenderEnum.UNKNOWN) {
