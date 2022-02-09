@@ -107,7 +107,7 @@ export default {
   POST_LOG_NAME2: parseEnvString('POST_LOG_NAME2') || '',
 
   // Link to Google Form for reporting
-  REPORT_LINK: parseEnvString('REPORT_LINK') || 'https://example.com',
+  REPORT_LINK: parseEnvString('REPORT_LINK') || 'https://me.momo.vn/MRI4ubsxsZIZs9tquVCg',
 
   // Maximum number of people in wait room
   MAX_PEOPLE_IN_WAITROOM: parseEnvNumber('MAX_PEOPLE_IN_WAITROOM') || 20,
