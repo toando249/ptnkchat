@@ -65,16 +65,6 @@ const quick_buttons_generic: Array<SendQuickReply> = [
     title: 'trợ giúp',
     payload: lang.KEYWORD_HELP,
   },
-  {
-    content_type: 'text',
-    title: 'meow',
-    payload: lang.KEYWORD_CAT,
-  },
-  {
-    content_type: 'text',
-    title: 'gauw',
-    payload: lang.KEYWORD_DOG,
-  },
 ];
 
 const quick_buttons_genders: Array<SendQuickReply> = [
