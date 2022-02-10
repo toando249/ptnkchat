@@ -51,16 +51,6 @@ const persistent_menu = [
         payload: lang.KEYWORD_HELP,
       },
       {
-        title: 'meo',
-        type: 'postback',
-        payload: lang.KEYWORD_CAT,
-      },
-      {
-        title: 'gauw',
-        type: 'postback',
-        payload: lang.KEYWORD_DOG,
-      },
-      {
         title: 'donate',
         type: 'web_url',
         url: config.REPORT_LINK,
