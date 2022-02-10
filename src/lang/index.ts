@@ -11,18 +11,16 @@ export default {
             '- batdau: Bắt đầu tìm bạn chat\n' +
             '- ketthuc: Kết thúc chat\n' +
             '- trogiup: Xem trợ giúp\n' +
-            '- meow: Xem ảnh mèo\n' +
-            '- gauw: Xem ảnh cún\n\n' +
             'Các lệnh có thể dùng khi đang không chat:\n' +
             '- timnu: Tìm nữ chat cùng\n' +
             '- timnam: Tìm nam chat cùng',
 
-  START_OKAY: '[BOT] OK! Chúng mình sẽ thông báo khi tìm được.',
+  START_OKAY: '[BOT] Đang tìm kiếm... Chúng mình sẽ thông báo khi tìm được.',
   START_WARN_GENDER: '[BOT] Lưu ý: Bạn không chọn giới tính. Có thể bạn sẽ phải đợi lâu hơn.',
   START_ERR_ALREADY: '[BOT] Bạn không thể batdau khi chưa ketthuc...',
 
   WAITING: '[BOT] Đang tìm bạn chat... Nếu bạn muốn đổi giới tính, gửi ketthuc sau đó chọn giới tính mới.',
-  CONNECTED: '[BOT] Connected! Nếu muốn kết thúc, hãy gửi ketthuc',
+  CONNECTED: '[BOT] Đã kết nối! Nếu muốn kết thúc, hãy gửi ketthuc',
 
   END_CHAT: '[BOT] End chat!\nGửi batdau hoặc bấm vào nút để tìm bạn chat.',
   END_CHAT_PARTNER: '[BOT] Bạn ý đã ngắt kết nối :(\nGửi batdau hoặc bấm vào nút để tìm bạn chat.',
