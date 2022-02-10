@@ -31,16 +31,6 @@ const persistent_menu = [
     composer_input_disabled: false,
     call_to_actions: [
       {
-        title: 'meow',
-        type: 'postback',
-        payload: lang.KEYWORD_CAT,
-      },
-      {
-        title: 'gauw',
-        type: 'postback',
-        payload: lang.KEYWORD_DOG,
-      },
-      {
         title: 'tìm nam',
         type: 'postback',
         payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE,
@@ -61,6 +51,16 @@ const persistent_menu = [
         payload: lang.KEYWORD_HELP,
       },
       {
+        title: 'meo',
+        type: 'postback',
+        payload: lang.KEYWORD_CAT,
+      },
+      {
+        title: 'gauw',
+        type: 'postback',
+        payload: lang.KEYWORD_DOG,
+      },
+      {
         title: 'donate',
         type: 'web_url',
         url: config.REPORT_LINK,
@@ -72,6 +72,11 @@ const persistent_menu = [
 const quick_buttons_generic: Array<SendQuickReply> = [
   {
     content_type: 'text',
+    title: 'trợ giúp',
+    payload: lang.KEYWORD_HELP,
+  },
+  {
+    content_type: 'text',
     title: 'meow',
     payload: lang.KEYWORD_CAT,
   },
@@ -79,11 +84,6 @@ const quick_buttons_generic: Array<SendQuickReply> = [
     content_type: 'text',
     title: 'gauw',
     payload: lang.KEYWORD_DOG,
-  },
-  {
-    content_type: 'text',
-    title: 'trợ giúp',
-    payload: lang.KEYWORD_HELP,
   },
 ];
 
