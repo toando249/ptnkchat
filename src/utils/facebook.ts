@@ -59,14 +59,6 @@ const persistent_menu = [
   },
 ];
 
-const quick_buttons_generic: Array<SendQuickReply> = [
-  {
-    content_type: 'text',
-    title: 'trợ giúp',
-    payload: lang.KEYWORD_HELP,
-  },
-];
-
 const quick_buttons_genders: Array<SendQuickReply> = [
   {
     content_type: 'text',
@@ -77,6 +69,14 @@ const quick_buttons_genders: Array<SendQuickReply> = [
     content_type: 'text',
     title: 'tìm nữ',
     payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE,
+  },
+];
+
+const quick_buttons_generic: Array<SendQuickReply> = [
+  {
+    content_type: 'text',
+    title: 'trợ giúp',
+    payload: lang.KEYWORD_HELP,
   },
 ];
 
