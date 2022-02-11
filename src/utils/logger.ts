@@ -48,4 +48,4 @@ const logError = (source: string, message: string, err: unknown = null, sendToDe
       parse: 'json',
       data: payload,
     });
-   }
+   };
