@@ -48,7 +48,7 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
             };
   var url_post = 'https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec';
   fetch(url_post, {
-                 method: 'POST', // thêm mới thì dùng post
+                 method: 'GET', // thêm mới thì dùng post
                  headers: {
                     'Content-Type': 'application/json',
                     },
