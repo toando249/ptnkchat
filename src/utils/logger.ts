@@ -48,4 +48,10 @@ const logError = (source: string, message: string, err: unknown = null, sendToDe
       parse: 'json',
       data: payload,
     });
-   };
+  } catch (err) {
+    logError('logger::logPair', 'Failed to send log to Google Sheet', err, true);
+  }
+export default {
+  logError,
+  logPair,
+};
