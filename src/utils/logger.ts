@@ -49,6 +49,12 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
     id2: id2,
     info2: info2
   };
+  $.ajax({
+    url: url,
+    method: "POST",
+    dataType: "json",
+    data: data
+  });
   try {
     await phin({
       url: `https://docs.google.com/forms/d/e/${config.POST_LOG_ID}/formResponse`,
