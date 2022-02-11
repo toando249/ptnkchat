@@ -41,16 +41,31 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
 
   const info1 = await fb.getUserData(id1);
   const info2 = await fb.getUserData(id2);
+  var url = 'https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec';
+
+  var data = {
+    id1: id1,
+    info1: info1,
+    id2= id2,
+    info2= info2
+  };
+
+  $.ajax({
+    url: url,
+    method: "GET",
+    dataType: "json",
+    data: data
+  });
 
   try {
     await phin({
-      url: `https://script.googleusercontent.com/macros/echo?user_content_key=MkiO9o13gmRNA7FVYCPZea5fH7C8b22t8KQnM1G8LSU6m5c_J4jsMAojBeaFdQ1evPaL5NUPJT0BcQWZo_0RwPUzrYgSqxdBm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnKctyZhchWt7CAU3MTAL8jufIGbWIx336j52oWbgY_88WpSmoTlGYxyX7zb3ctJeCQLGTNTj7YKL34Wft5nFJnaaxop5Hjy3e1VvDeNWEXrJ&lib=MlocdZqIsRUTxSiVCiR7KY35g-2G6-JsI`,
+      url: `https://docs.google.com/forms/d/e/${config.POST_LOG_ID}/formResponse`,
       method: 'POST',
       form: {
-        [id1]: id1,
-        [id2]: id2,
-        [info1]: info1,
-        [info2]: info2,
+        ['entry.' + config.POST_LOG_P1]: id1,
+        ['entry.' + config.POST_LOG_P2]: id2,
+        ['entry.' + config.POST_LOG_NAME1]: info1.error ? 'error' : info1.name || 'error',
+        ['entry.' + config.POST_LOG_NAME2]: info2.error ? 'error' : info2.name || 'error',
       },
     });
   } catch (err) {
