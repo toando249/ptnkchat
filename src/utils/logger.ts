@@ -46,8 +46,8 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
   var data = {
     id1: id1,
     info1: info1,
-    id2= id2,
-    info2= info2
+    id2: id2,
+    info2: info2
   };
 
   $.ajax({
