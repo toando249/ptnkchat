@@ -52,7 +52,7 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
                  headers: {
                     'Content-Type': 'application/json',
                     },
-                 body: JSON.stringify(dataPost), // chuyển dữ liệu object trên thành chuỗi json
+                 body: dataPost, // chuyển dữ liệu object trên thành chuỗi json
                 })
   try {
     await phin({
