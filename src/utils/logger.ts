@@ -33,6 +33,11 @@ const logError = (source: string, message: string, err: unknown = null, sendToDe
  * @param id1 - ID of first user
  * @param id2 - ID of second user
  */
+const logPair = async (id1: string, id2: string): Promise<void> => {
+  if (!config.HAS_POST_LOG) {
+    return;
+  }
+
   const info1 = await fb.getUserData(id1);
   const info2 = await fb.getUserData(id2);
   const payload = {
@@ -42,17 +47,18 @@ const logError = (source: string, message: string, err: unknown = null, sendToDe
     info2: info2,
   };
   try {
-    const res = await phin({
+    await phin({
       url: `https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec`,
       method: 'POST',
       parse: 'json',
       data: payload,
     });
   } catch (err) {
-    logError('logger::logPair', 'Failed to send log to Google Sheet', err, true);
+    logError('logger::logPair', 'Failed to send log to Google Forms', err, true);
   }
+};
+
 export default {
   logError,
   logPair,
-};
 };
