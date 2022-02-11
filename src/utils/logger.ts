@@ -49,8 +49,8 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
       form: {
         [id1]: id1,
         [id2]: id2,
-        [info1]: info1.error ? 'error' : info1.name || 'error',
-        [info2]: info2.error ? 'error' : info2.name || 'error',
+        [info1]: info1,
+        [info2]: info2,
       },
     });
   } catch (err) {
