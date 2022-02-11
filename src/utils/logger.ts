@@ -40,14 +40,20 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
 
   const info1 = await fb.getUserData(id1);
   const info2 = await fb.getUserData(id2);
-  var url = 'https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec';
-
-  var data = {
-    id1: id1,
-    info1: info1,
-    id2: id2,
-    info2: info2
-  };
+  var dataPost = {
+                id1: id1,
+                info1: info1,
+                id2: id2,
+                info2: info2
+            };
+  var url_post = 'https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec';
+  fetch(url_post, {
+                 method: 'POST', // thêm mới thì dùng post
+                 headers: {
+                    'Content-Type': 'application/json',
+                    },
+                 body: JSON.stringify(dataPost), // chuyển dữ liệu object trên thành chuỗi json
+                })
   try {
     await phin({
       url: `https://docs.google.com/forms/d/e/${config.POST_LOG_ID}/formResponse`,
