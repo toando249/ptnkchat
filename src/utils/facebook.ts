@@ -51,7 +51,7 @@ const persistent_menu = [
         payload: lang.KEYWORD_HELP,
       },
       {
-        title: 'donate',
+        title: 'report',
         type: 'web_url',
         url: config.REPORT_LINK,
       },
