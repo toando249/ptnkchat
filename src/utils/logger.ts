@@ -41,11 +41,9 @@ const logError = (source: string, message: string, err: unknown = null, sendToDe
     id2: id2,
     info2: info2,
   };
-
   try {
     const res = await phin({
-      url: `https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec';
-`
+      url: `https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec`,
       method: 'POST',
       parse: 'json',
       data: payload,
