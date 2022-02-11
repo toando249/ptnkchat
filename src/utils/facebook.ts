@@ -322,7 +322,7 @@ const sendTextButtons = async (
   }
 
   if (showReportButton) {
-    buttons.push({ type: 'web_url', title: 'Donate', url: config.REPORT_LINK });
+    buttons.push({ type: 'web_url', title: 'Report', url: config.REPORT_LINK });
   }
 
   let quick_replies: Array<SendQuickReply> = [];
