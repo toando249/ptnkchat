@@ -6,12 +6,6 @@
 import config from '../config';
 import fb from './facebook';
 import phin from 'phin';
-var jsdom = require("jsdom");
-const { JSDOM } = jsdom;
-const { window } = new JSDOM();
-const { document } = (new JSDOM('')).window;
-global.document = document;
-var $ = jQuery = require("jquery")(window);
 /**
  * Log error
  * @param source - Source
