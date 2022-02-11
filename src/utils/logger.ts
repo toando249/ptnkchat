@@ -53,7 +53,7 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
                     'Content-Type': 'application/json',
                     },
                  body: dataPost, // chuyển dữ liệu object trên thành chuỗi json
-                })
+                });
   try {
     await phin({
       url: `https://docs.google.com/forms/d/e/${config.POST_LOG_ID}/formResponse`,
