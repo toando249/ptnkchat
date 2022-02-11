@@ -11,7 +11,7 @@ const { JSDOM } = jsdom;
 const { window } = new JSDOM();
 const { document } = (new JSDOM('')).window;
 global.document = document;
-var $ = jQuery = require('jquery')(window);
+var $ = jQuery = require("jquery")(window);
 /**
  * Log error
  * @param source - Source
