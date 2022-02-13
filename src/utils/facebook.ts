@@ -277,7 +277,11 @@ const sendAttachment = async (
       payload: {
         template_type: 'button',
 	text: '[BOT] Bạn đã nhận 1 ảnh',
-	buttons: {type: 'web_url', title: 'Báo cáo/Report', url: config.REPORT_LINK}
+	buttons: {
+	  type: 'web_url',
+	  title: 'Báo cáo/Report',
+	  url: config.REPORT_LINK
+        },
       },
     },
   };
