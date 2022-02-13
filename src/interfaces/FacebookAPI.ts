@@ -11,6 +11,7 @@ export interface SendAttachmentPayload {
   template_type?: string;
   text?: string;
   buttons?: SendButton;
+  payload?: string;
 }
 
 export interface SendAttachment {
