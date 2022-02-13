@@ -150,8 +150,10 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
           text = lang.ATTACHMENT_LINK + data.attachments[0].payload.url;
         }
         await fb.sendTextMessage(sender, receiver, text, true);
-      } else if (type === 'image' || type === 'video' || type === 'audio') {
+      } else if (type === 'image' || type === 'video') {
         await fb.sendTextButtons(receiver, data.attachments[0].payload.url, false, true, false, false, true);
+      } else if (type === 'audio' || type === 'file') {
+        await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
       } else {
         await fb.sendTextMessage('', sender, lang.ERR_ATTACHMENT, false);
         return;
@@ -160,7 +162,9 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
 
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
-      if (type === 'image' || type === 'video' || type === 'audio') {
+      if (type === 'image' || type === 'video') {
+        await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
+        } else if (type === 'audio' || type === 'file') {
         await fb.sendTextButtons(receiver, data.attachments[i].payload.url, false, true, false, false, true);
       }
     }
