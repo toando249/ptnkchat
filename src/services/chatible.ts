@@ -151,7 +151,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video' || type === 'audio' || type === 'file') {
-        await fb.sendTextButtons(receiver, data.attachments[i].payload.url, true, false, false, false, true);
+        await fb.sendTextButtons(receiver, data.attachments[0].payload.url, true, false, false, false, true);
       } else {
         await fb.sendTextMessage('', sender, lang.ERR_ATTACHMENT, false);
         return;
