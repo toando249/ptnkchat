@@ -304,6 +304,7 @@ const sendTextMessage = async (sender: string, receiver: string, text: string, u
  * @param showReportButton - Should show report button
  * @param showGenericButton - Should show generic button
  * @param showGenderButton - Should show gender button
+ * @param showViewButton - Should show view file
  * @param usePersona - Should send with persona
  */
 const sendTextButtons = async (
