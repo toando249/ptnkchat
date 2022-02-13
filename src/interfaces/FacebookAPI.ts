@@ -34,6 +34,7 @@ export interface SendRecipientObject {
 }
 
 export interface SendMessageObject {
+  message?: string;
   text?: string;
   attachment?: SendAttachment;
   quick_replies?: Array<SendQuickReply>;
