@@ -353,6 +353,7 @@ const sendTextButtons = async (
     };
   } else {
     messageData.text = text;
+  }
   if (showReportButton) {
     messageData.attachment = {
       type: 'template',
