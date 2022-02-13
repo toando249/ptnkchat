@@ -272,7 +272,7 @@ const sendAttachment = async (
   }
 
   const message: SendMessageObject = {
-    attachment {
+    attachment: {
       type: 'template',
       payload: {
         template_type: 'button',
