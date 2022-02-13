@@ -342,8 +342,18 @@ const sendTextButtons = async (
   if (showGenericButton || showGenderButton) {
     messageData.quick_replies = quick_replies;
   }
-
-  if (showStartButton || showReportButton) {
+  if (showStartButton) {
+    messageData.attachment = {
+      type: 'template',
+      payload: {
+        template_type: 'button',
+        text,
+        buttons,
+      },
+    };
+  } else {
+    messageData.text = text;
+  if (showReportButton) {
     messageData.attachment = {
       type: 'template',
       payload: {
