@@ -314,6 +314,7 @@ const sendTextButtons = async (
   showGenericButton: boolean,
   showGenderButton: boolean,
   usePersona: boolean,
+  showViewButton: boolean,
 ): Promise<void> => {
   const buttons = [];
 
@@ -322,9 +323,11 @@ const sendTextButtons = async (
   }
 
   if (showReportButton) {
+    buttons.push({ type: 'web_url', title: 'Báo cáo', url: config.REPORT_LINK});
+  }
+  if (showViewButton) {
     buttons.push({ type: 'web_url', title: 'Xem', url: text});
   }
-
   let quick_replies: Array<SendQuickReply> = [];
   if (showGenericButton) {
     quick_replies = quick_replies.concat(quick_buttons_generic);
