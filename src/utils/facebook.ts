@@ -69,6 +69,11 @@ const quick_buttons_genders: Array<SendQuickReply> = [
     title: 'tìm nữ',
     payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_FEMALE,
   },
+  {
+    content_type: 'text',
+    title: 'nam + nữ',
+    payload: lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_BOTH,
+  },
 ];
 
 const quick_buttons_generic: Array<SendQuickReply> = [
