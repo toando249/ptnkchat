@@ -351,10 +351,7 @@ const sendTextButtons = async (
         buttons,
       },
     };
-  } else {
-    messageData.text = text;
-  }
-  if (showReportButton) {
+  } else if (showReportButton) {
     messageData.attachment = {
       type: 'template',
       payload: {
