@@ -10,11 +10,11 @@ export interface SendAttachmentPayload {
   is_reusable?: boolean;
   template_type?: string;
   text?: string;
-  buttons?: web_url | Array<SendButton>;
+  buttons?: Array<SendButton>;
 }
 
 export interface SendAttachment {
-  type: string | template;
+  type: string;
   payload: SendAttachmentPayload;
 }
 
