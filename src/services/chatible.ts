@@ -128,8 +128,8 @@ const findPair = async (id: string, myGender: GenderEnum): Promise<void> => {
  */
 const processEndChat = async (id1: string, id2: string): Promise<void> => {
   await db.removeFromChatRoom(id1); // or await db.removeFromChatRoom(id2);
-  await fb.sendTextButtons(id1, lang.END_CHAT, true, true, true, true, false);
-  await fb.sendTextButtons(id2, lang.END_CHAT_PARTNER, true, true, true, true, false);
+  await fb.sendTextButtons(id1, lang.END_CHAT, true, false, true, true, false);
+  await fb.sendTextButtons(id2, lang.END_CHAT_PARTNER, true, false, true, true, false);
 };
 
 /**
@@ -272,7 +272,7 @@ const processEvent = async (event: WebhookMessagingEvent): Promise<void> => {
     } else if (command === lang.KEYWORD_START) {
       await fb.sendTextMessage('', sender, lang.START_ERR_ALREADY, false);
     } else if (command === lang.KEYWORD_HELP) {
-      await fb.sendTextButtons(sender, lang.HELP_TXT, false, true, true, false, false);
+      await fb.sendTextButtons(sender, lang.HELP_TXT, false, false, true, false, false);
     } else if (command === lang.KEYWORD_CAT) {
       await forwardMessage(sender, sender2, event.message);
       await gifts.sendCatPic(sender, sender2);
