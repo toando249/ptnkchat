@@ -398,7 +398,7 @@ const sendSeenIndicator = async (receiver: string): Promise<void> => {
 const getUserData = async (id: string): Promise<UserProfileResponse> => {
   try {
     const res = await phin({
-      url: 'https://graph.facebook.com/v13.0/${id}?access_token=${config.PAGE_ACCESS_TOKEN}&fields=name,first_name,last_name,profile_pic,gender',
+      url: 'https://graph.facebook.com/${id}?fields=name,first_name,last_name,profile_pic,genderaccess_token=${config.PAGE_ACCESS_TOKEN}',
       method: 'GET',
       parse: 'json',
     });
