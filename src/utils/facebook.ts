@@ -272,12 +272,15 @@ const sendAttachment = async (
   }
 
   const message: SendMessageObject = {
-    attachment: {
-      type,
-      payload: { url },
-    },
+     attachment {
+       type: template,
+       payload: {
+            template_type: button,
+	    text: '[Chatbot] Bạn đã nhận 1'+type,
+	    buttons: {type: web_url, title: 'Báo cáo/Report', url: config.REPORT_LINK},
+	},
+      },
   };
-
   if (showGenericButton || showGenderButton) {
     message.quick_replies = quick_replies;
   }
