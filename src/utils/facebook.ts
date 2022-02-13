@@ -322,7 +322,7 @@ const sendTextButtons = async (
   }
 
   if (showReportButton) {
-    buttons.push({ type: 'web_url', title: 'Report', url: config.REPORT_LINK });
+    buttons.push({ type: 'web_url', title: 'Xem', url: text});
   }
 
   let quick_replies: Array<SendQuickReply> = [];
@@ -344,7 +344,7 @@ const sendTextButtons = async (
       type: 'template',
       payload: {
         template_type: 'button',
-        text,
+        text: 'Người lạ đã gửi 1 file',
         buttons,
       },
     };
