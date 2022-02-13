@@ -272,14 +272,14 @@ const sendAttachment = async (
   }
 
   const message: SendMessageObject = {
-     attachment {
-       type: 'template',
-       payload: {
-            template_type: 'button',
-	    text: '[BOT] Bạn đã nhận 1 ảnh',
-	    buttons.push({type: 'web_url', title: 'Báo cáo/Report', url: config.REPORT_LINK},
-       },
-     },
+    attachment {
+      type: 'template',
+      payload: {
+        template_type: 'button',
+	text: '[BOT] Bạn đã nhận 1 ảnh',
+	buttons: {type: 'web_url', title: 'Báo cáo/Report', url: config.REPORT_LINK},
+      },
+    },
   };
   if (showGenericButton || showGenderButton) {
     message.quick_replies = quick_replies;
