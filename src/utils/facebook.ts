@@ -344,7 +344,7 @@ const sendTextButtons = async (
       type: 'template',
       payload: {
         template_type: 'button',
-        text: 'Người lạ đã gửi 1 file',
+        text: '[BOT] Bạn chat đã gửi 1 ảnh/video',
         buttons,
       },
     };
