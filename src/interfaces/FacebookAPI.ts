@@ -16,6 +16,7 @@ export interface SendAttachmentPayload {
 export interface SendAttachment {
   type: string;
   payload: SendAttachmentPayload;
+  buttons?: Array<SendButton>
 }
 
 export interface SendQuickReply {
