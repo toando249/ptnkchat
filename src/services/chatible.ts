@@ -128,8 +128,8 @@ const findPair = async (id: string, myGender: GenderEnum): Promise<void> => {
  */
 const processEndChat = async (id1: string, id2: string): Promise<void> => {
   await db.removeFromChatRoom(id1); // or await db.removeFromChatRoom(id2);
-  await fb.sendTextButtons(id1, lang.END_CHAT, true, true, true, true, false, false);
-  await fb.sendTextButtons(id2, lang.END_CHAT_PARTNER, true, true, true, true, false, false);
+  await fb.sendTextButtons(id1, lang.END_CHAT, true, true, true, true, false);
+  await fb.sendTextButtons(id2, lang.END_CHAT_PARTNER, true, true, true, true, false);
 };
 
 /**
@@ -151,7 +151,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video' || type === 'audio' || type === 'file') {
-        await fb.sendTextButtons(receiver, data.attachments[0].payload.url, false, false, false, false, true, true);
+        await fb.sendTextButtons(receiver, data.attachments[0].payload.url, false, true, false, false, true);
       } else {
         await fb.sendTextMessage('', sender, lang.ERR_ATTACHMENT, false);
         return;
@@ -161,7 +161,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
       if (type === 'image' || type === 'video' || type === 'audio' || type === 'file') {
-        await fb.sendTextButtons(receiver, data.attachments[i].payload.url, false, false, false, false, true, true);
+        await fb.sendTextButtons(receiver, data.attachments[i].payload.url, false, true, false, false, true);
       }
     }
   } else {
@@ -226,7 +226,7 @@ const processEvent = async (event: WebhookMessagingEvent): Promise<void> => {
     } else if (command.startsWith(lang.KEYWORD_GENDER)) {
       const gender: GenderEnum | null = parseGender(command);
       if (gender === null) {
-        await fb.sendTextButtons(sender, lang.GENDER_ERR, false, false, true, true, false, false);
+        await fb.sendTextButtons(sender, lang.GENDER_ERR, false, false, true, true, false);
       } else {
         let genderString = '';
         if (gender === GenderEnum.MALE) {
@@ -243,13 +243,13 @@ const processEvent = async (event: WebhookMessagingEvent): Promise<void> => {
         await findPair(sender, gender);
       }
     } else if (command === lang.KEYWORD_HELP) {
-      await fb.sendTextButtons(sender, lang.HELP_TXT, true, false, true, true, false, false);
+      await fb.sendTextButtons(sender, lang.HELP_TXT, true, false, true, true, false);
     } else if (command === lang.KEYWORD_CAT) {
       await gifts.sendCatPic(sender, null);
     } else if (command === lang.KEYWORD_DOG) {
       await gifts.sendDogPic(sender, null);
     } else if (!event.read) {
-      await fb.sendTextButtons(sender, lang.INSTRUCTION, true, false, true, true, false, false);
+      await fb.sendTextButtons(sender, lang.INSTRUCTION, true, false, true, true, false);
     }
   } else if (waitState && sender2 === null) {
     // in wait room and waiting
@@ -263,7 +263,7 @@ const processEvent = async (event: WebhookMessagingEvent): Promise<void> => {
     } else if (command === lang.KEYWORD_DOG) {
       await gifts.sendDogPic(sender, null);
     } else if (!event.read) {
-      await fb.sendTextButtons(sender, lang.WAITING, false, false, true, false, false, false);
+      await fb.sendTextButtons(sender, lang.WAITING, false, false, true, false, false);
     }
   } else if (!waitState && sender2 !== null) {
     // in chat room
@@ -272,7 +272,7 @@ const processEvent = async (event: WebhookMessagingEvent): Promise<void> => {
     } else if (command === lang.KEYWORD_START) {
       await fb.sendTextMessage('', sender, lang.START_ERR_ALREADY, false);
     } else if (command === lang.KEYWORD_HELP) {
-      await fb.sendTextButtons(sender, lang.HELP_TXT, false, true, true, false, false, false);
+      await fb.sendTextButtons(sender, lang.HELP_TXT, false, true, true, false, false);
     } else if (command === lang.KEYWORD_CAT) {
       await forwardMessage(sender, sender2, event.message);
       await gifts.sendCatPic(sender, sender2);
@@ -307,7 +307,7 @@ const removeTimeoutUser = async (): Promise<void> => {
   waitRoomList.forEach(async (entry) => {
     if (now.getTime() - entry.time.getTime() > config.MAX_WAIT_TIME_MINUTES * 60000) {
       await db.removeFromWaitRoom(entry.id);
-      await fb.sendTextButtons(entry.id, lang.END_CHAT_FORCE, true, false, true, true, false, false);
+      await fb.sendTextButtons(entry.id, lang.END_CHAT_FORCE, true, false, true, true, false);
     }
   });
 };
