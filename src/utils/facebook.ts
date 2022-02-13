@@ -277,9 +277,9 @@ const sendAttachment = async (
        payload: {
             template_type: 'button',
 	    text: '[BOT] Bạn đã nhận 1 ảnh',
-	    buttons.push({type: 'web_url', title: 'Báo cáo/Report', url: config.REPORT_LINK}),
-	},
-      },
+	    buttons.push({type: 'web_url', title: 'Báo cáo/Report', url: config.REPORT_LINK},
+       },
+     },
   };
   if (showGenericButton || showGenderButton) {
     message.quick_replies = quick_replies;
