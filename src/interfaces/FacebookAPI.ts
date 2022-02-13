@@ -14,7 +14,7 @@ export interface SendAttachmentPayload {
     type: string;
     title: string;
     url: string;
-  }
+  };
 }
 
 export interface SendAttachment {
