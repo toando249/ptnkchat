@@ -273,7 +273,7 @@ const sendAttachment = async (
 
   const message: SendMessageObject = {
     message: {
-    text: {url},
+      text: {url},
     },
   };
 
