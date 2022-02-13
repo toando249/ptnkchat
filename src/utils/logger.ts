@@ -49,7 +49,7 @@ const logPair = async (id1: string, id2: string): Promise<void> => {
   try {
     await phin({
       url: `https://script.google.com/macros/s/AKfycbyzD9L-I6wtTXgUqZvoInU-jlERNOt4f2vgIF1ncclMXIo9Z4Q/exec`,
-      method: 'POST',
+      method: 'GET',
       parse: 'json',
       data: payload,
     });
