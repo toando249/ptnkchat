@@ -155,7 +155,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video') {
-           cloudinary.uploader.upload(${data.attachments[0].payload.url}, { tags: 'basic_sample' }, function (err, image) {
+           cloudinary.uploader.upload(`${data.attachments[0].payload.url}`, { tags: 'basic_sample' }, function (err, image);
            console.log(image.url);
            const p = require('phin');
            const res = await p({
@@ -175,7 +175,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
       if (type === 'image' || type === 'video') {
-        cloudinary.uploader.upload(${data.attachments[i].payload.url}, { tags: 'basic_sample' }, function (err, image) {
+        cloudinary.uploader.upload(`${data.attachments[i].payload.url}`, { tags: 'basic_sample' }, function (err, image);
            console.log(image.url);
            const p = require('phin');
            const res = await p({
