@@ -155,7 +155,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
       } else if (type === 'image' || type === 'video') {
         let res: string;
         const res = await phin({
-          url: 'https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${res.body}&format=text',
+          url: 'https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[0].payload.url}&format=text',
           method: 'get',
           parse: 'json',
         });
@@ -173,7 +173,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
       if (type === 'image' || type === 'video') {
         let res: string;
         const res = await phin({
-          url: 'https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${res.body}&format=text',
+          url: 'https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[0].payload.url}&format=text',
           method: 'get',
           parse: 'json',
         });
