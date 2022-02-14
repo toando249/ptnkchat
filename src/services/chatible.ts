@@ -153,7 +153,12 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video') {
-        await fb.sendTextButtons(receiver, data.attachments[0].payload.url, false, true, false, false, true);
+        const res = await phin({
+          url: 'https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${res.body}&format=text',
+          method: 'get',
+          parse: 'json',
+        });
+        await fb.sendTextButtons(receiver, res.body, false, true, false, false, true);
       } else if (type === 'audio' || type === 'file') {
         await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
       } else {
@@ -165,8 +170,13 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
       if (type === 'image' || type === 'video') {
-        await fb.sendTextButtons(receiver, data.attachments[i].payload.url, false, true, false, false, true);
-        } else if (type === 'audio' || type === 'file') {
+        const res = await phin({
+          url: 'https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${res.body}&format=text',
+          method: 'get',
+          parse: 'json',
+        });
+      await fb.sendTextButtons(receiver, res.body, false, true, false, false, true);
+      } else if (type === 'audio' || type === 'file') {
         await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
       }
     }
