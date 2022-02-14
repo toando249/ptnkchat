@@ -155,7 +155,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video') {
-           var cloudinary = require('cloudinary').v2;
+           const cloudinary = require('cloudinary').v2;
            cloudinary.uploader.upload(`${data.attachments[0].payload.url}`, function(error, result) { console.log(result) });
            const p = require('phin');
            const res = await p({
