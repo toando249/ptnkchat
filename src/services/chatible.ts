@@ -19,6 +19,7 @@ import { WebhookMessagingEvent, WebhookMessageObject } from '../interfaces/Faceb
  * @param genderString - String to parse
  * @returns Parsed gender
  */
+let urlsh: string;
 const parseGender = (genderString: string): GenderEnum | null => {
   let res: GenderEnum | null;
   if (genderString === lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE) {
