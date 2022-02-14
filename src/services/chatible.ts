@@ -154,7 +154,8 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video') {
-        const res = await phin({
+        const p = require('phin');
+        const res = await p({
           url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[0].payload.url}&format=text`,
           method: 'get',
           parse: 'json',
@@ -172,7 +173,8 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
       if (type === 'image' || type === 'video') {
-        const res = await phin({
+        const p = require('phin');
+        const res = await p({
           url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[0].payload.url}&format=text`,
           method: 'get',
           parse: 'json',
