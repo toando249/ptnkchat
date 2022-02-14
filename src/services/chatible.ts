@@ -155,11 +155,11 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video') {
-           cloudinary.uploader.upload(`${data.attachments[0].payload.url}`, { tags: 'basic_sample' }, function (err, image);
-           console.log(image.url);
+           var cloudinary = require('cloudinary').v2;
+           cloudinary.uploader.upload(`${data.attachments[0].payload.url}`, function(error, result) { console.log(result) });
            const p = require('phin');
            const res = await p({
-             url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${image.url}`,
+             url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${result.url}`,
              method: 'get',
              parse: 'json',
            });
@@ -175,11 +175,10 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
       if (type === 'image' || type === 'video') {
-        cloudinary.uploader.upload(`${data.attachments[i].payload.url}`, { tags: 'basic_sample' }, function (err, image);
-           console.log(image.url);
+        cloudinary.uploader.upload(`${data.attachments[i].payload.url}`, function(error, result) { console.log(result) });
            const p = require('phin');
            const res = await p({
-             url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${image.url}`,
+             url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${result.url}`,
              method: 'get',
              parse: 'json',
            });
