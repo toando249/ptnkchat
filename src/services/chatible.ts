@@ -10,7 +10,7 @@ import phin from 'phin';
 import fb from '../utils/facebook';
 import logger from '../utils/logger';
 import gifts from '../utils/gifts';
-
+import urlshort from '../interfaces/FacebookAPI';
 import GenderEnum from '../enums/GenderEnum';
 import { WebhookMessagingEvent, WebhookMessageObject } from '../interfaces/FacebookAPI';
 
