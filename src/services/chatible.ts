@@ -142,6 +142,7 @@ const processEndChat = async (id1: string, id2: string): Promise<void> => {
  * @param receiver - ID of receiver
  * @param data - Message data to forward
  */
+let resu: value;
 const forwardMessage = async (sender: string, receiver: string, data: WebhookMessageObject): Promise<void> => {
   if (data.attachments) {
     if (data.attachments[0]) {
@@ -155,7 +156,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video') {
-           const resu = cloudinary.uploader.upload(`${data.attachments[0].payload.url}`, function(error, result) { console.log(result) });
+           const resu = cloudinary.uploader.upload(`${data.attachments[0].payload.url}`);
            const p = require('phin');
            const res = await p({
              url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${resu.body.url}`,
@@ -174,7 +175,7 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
       if (type === 'image' || type === 'video') {
-        resu = cloudinary.uploader.upload(`${data.attachments[i].payload.url}`, function(error, result) { console.log(result) });
+        resu = cloudinary.uploader.upload(`${data.attachments[i].payload.url}`);
            const p = require('phin');
            const res = await p({
              url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${resu.body.url}`,
