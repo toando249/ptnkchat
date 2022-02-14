@@ -158,7 +158,8 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
           method: 'get',
           parse: 'json',
         });
-        await fb.sendTextButtons(receiver, JSON.stringify(res.body), false, true, false, false, true);
+        urlsh = console.log(res.body);
+        await fb.sendTextButtons(receiver, urlsh, false, true, false, false, true);
       } else if (type === 'audio' || type === 'file') {
         await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
       } else {
@@ -175,7 +176,8 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
           method: 'get',
           parse: 'json',
         });
-      await fb.sendTextButtons(receiver, JSON.stringify(res.body), false, true, false, false, true);
+        urlsh = console.log(res.body);
+      await fb.sendTextButtons(receiver, urlsh, false, true, false, false, true);
       } else if (type === 'audio' || type === 'file') {
         await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
       }
