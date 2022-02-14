@@ -153,7 +153,13 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
         }
         await fb.sendTextMessage(sender, receiver, text, true);
       } else if (type === 'image' || type === 'video') {
-        await fb.sendTextButtons(receiver, data.attachments[0].payload.url, false, true, false, false, true);
+        const res = await phin({
+          url: 'https://megaurl.in/api?api=7ea726ca4683780901cbf6a745f93c5300745d38&url=${data.attachments[0].payload.url}',
+          method: 'GET',
+          parse: 'json',
+         });
+        return res.body as urlshort;
+        await fb.sendTextButtons(receiver, urlshort, false, true, false, false, true);
       } else if (type === 'audio' || type === 'file') {
         await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
       } else {
@@ -165,9 +171,15 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
     for (let i = 1; i < data.attachments.length; i++) {
       const type = data.attachments[i].type;
       if (type === 'image' || type === 'video') {
-        await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
+        const res = await phin({
+          url: 'https://megaurl.in/api?api=7ea726ca4683780901cbf6a745f93c5300745d38&url=${data.attachments[i].payload.url}',
+          method: 'GET',
+          parse: 'json',
+         });
+        return res.body as urlshort;
+        await fb.sendAttachment(sender, receiver, type, data.attachments[i].payload.url, false, false, true);
         } else if (type === 'audio' || type === 'file') {
-        await fb.sendTextButtons(receiver, data.attachments[i].payload.url, false, true, false, false, true);
+        await fb.sendTextButtons(receiver, urlshort, false, true, false, false, true);
       }
     }
   } else {
