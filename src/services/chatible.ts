@@ -177,9 +177,9 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
           parse: 'json',
          });
         return res.body as urlshort;
-        await fb.sendAttachment(sender, receiver, type, data.attachments[i].payload.url, false, false, true);
-        } else if (type === 'audio' || type === 'file') {
         await fb.sendTextButtons(receiver, urlshort, false, true, false, false, true);
+        } else if (type === 'audio' || type === 'file') {
+          await fb.sendAttachment(sender, receiver, type, data.attachments[i].payload.url, false, false, true);
       }
     }
   } else {
