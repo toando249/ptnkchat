@@ -128,4 +128,8 @@ export default {
 
   // Project version. You don't need to set this.
   VERSION: '5.0.2',
+  // cloudinary
+  CLOUDINARY_URL: parseEnvString('CLOUDINARY_URL'),
 } as ConfigProps;
+  
+
