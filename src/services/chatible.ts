@@ -19,7 +19,6 @@ import { WebhookMessagingEvent, WebhookMessageObject } from '../interfaces/Faceb
  * @param genderString - String to parse
  * @returns Parsed gender
  */
-let urlsh: string;
 const parseGender = (genderString: string): GenderEnum | null => {
   let res: GenderEnum | null;
   if (genderString === lang.KEYWORD_GENDER + lang.KEYWORD_GENDER_MALE) {
@@ -156,12 +155,11 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
       } else if (type === 'image' || type === 'video') {
           const p = require('phin');
           const res = await p({
-            url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[0].payload.url}&format=text`,
+            url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[0].payload.url}`,
             method: 'get',
             parse: 'json',
           });
-          urlsh = JSON.stringify(console.log(res.body));
-          await fb.sendTextButtons(receiver, urlsh, false, true, false, false, true);
+          await fb.sendTextButtons(receiver, res.body.shortenedUrl, false, true, false, false, true);
       } else if (type === 'audio' || type === 'file') {
           await fb.sendAttachment(sender, receiver, type, data.attachments[0].payload.url, false, false, true);
       } else {
@@ -175,12 +173,11 @@ const forwardMessage = async (sender: string, receiver: string, data: WebhookMes
       if (type === 'image' || type === 'video') {
         const p = require('phin');
         const res = await p({
-          url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[i].payload.url}&format=text`,
+          url: `https://link1s.com/api?api=80cf501d5da3029daf180ea40277292339c053f1&url=${data.attachments[i].payload.url}`,
           method: 'get',
           parse: 'json',
         });
-        urlsh = JSON.stringify(console.log(res.body));
-      await fb.sendTextButtons(receiver, urlsh, false, true, false, false, true);
+      await fb.sendTextButtons(receiver, res.body.shortenedUrl, false, true, false, false, true);
       } else if (type === 'audio' || type === 'file') {
         await fb.sendAttachment(sender, receiver, type, data.attachments[i].payload.url, false, false, true);
       }
