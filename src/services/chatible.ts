@@ -6,7 +6,7 @@
 import db from '../db';
 import lang from '../lang';
 import config from '../config';
-
+import phin from 'phin';
 import fb from '../utils/facebook';
 import logger from '../utils/logger';
 import gifts from '../utils/gifts';
