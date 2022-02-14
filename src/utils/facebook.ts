@@ -16,6 +16,7 @@ import {
   UserProfileResponse,
   GetPersonasResponse,
   PostPersonasResponse,
+  urlshort,
 } from '../interfaces/FacebookAPI';
 
 const u = (path: string): string => config.GRAPH_API + path;
