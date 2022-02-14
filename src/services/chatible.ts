@@ -10,9 +10,8 @@ import phin from 'phin';
 import fb from '../utils/facebook';
 import logger from '../utils/logger';
 import gifts from '../utils/gifts';
-import urlshort from '/tmp/build_1088763e/src/interfaces/FacebookAPI';
 import GenderEnum from '../enums/GenderEnum';
-import { WebhookMessagingEvent, WebhookMessageObject } from '../interfaces/FacebookAPI';
+import { WebhookMessagingEvent, WebhookMessageObject, urlshort } from '../interfaces/FacebookAPI';
 
 /**
  * Parse string to get gender
