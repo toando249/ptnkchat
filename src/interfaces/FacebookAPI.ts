@@ -32,7 +32,7 @@ export interface SendRecipientObject {
   post_id?: string;
   comment_id?: string;
 }
-
+export interface urlshort?: string;
 export interface SendMessageObject {
   text?: string;
   attachment?: SendAttachment;
