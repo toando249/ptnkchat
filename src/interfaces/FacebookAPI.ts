@@ -33,7 +33,7 @@ export interface SendRecipientObject {
   comment_id?: string;
 }
 export interface urlshort {
-  urlshort?: string;
+  urlshorten?: string;
 }
 export interface SendMessageObject {
   text?: string;
