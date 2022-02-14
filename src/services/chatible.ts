@@ -10,10 +10,12 @@ import phin from 'phin';
 import fb from '../utils/facebook';
 import logger from '../utils/logger';
 import gifts from '../utils/gifts';
-
+import cloudinary from 'cloudinary';
 import GenderEnum from '../enums/GenderEnum';
 import { WebhookMessagingEvent, WebhookMessageObject } from '../interfaces/FacebookAPI';
-
+const fs = require('fs');
+const cloudinary = require('cloudinary').v2;
+const uploads = {};
 /**
  * Parse string to get gender
  * @param genderString - String to parse
